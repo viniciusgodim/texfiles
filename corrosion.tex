@@ -1,0 +1,70 @@
+\documentclass{article}
+\usepackage{siunitx}
+\usepackage{amsmath}
+\sisetup{locale = FR}
+\sisetup{round-mode=places,round-precision=4}
+
+\begin{document}
+
+\textbf{Uma tubulação construída em aço carbono falhou após 3 anos de operação. No exame, descobriu-se que a espessura da parede havia sido reduzida pela corrosão para cerca de metade do valor original. A tubulação foi construída com tubo nominal de \SI{100}{mm} (\SI{4}{pol.}) Cronograma 40, diâmetro interno de \SI{102.3}{mm} (\SI{4.026}{pol.}) e diâmetro externo de \SI{114.3}{mm} (\SI{4.5}{pol.}). Estime a taxa de corrosão dm $\mathrm{ipv}$ e em \si{mm} por anos.}
+
+Conversão de unidades fornece que
+
+\begin{align}
+  d_{i,0} = \SI{0.33562992}{ft} \\
+  d_{e,0} = \SI{0.375}{ft}
+\end{align}
+
+Em que $i$ e $e$ significam interno e externo respectivamente. E $0$ indica valor inicial.
+
+Diâmetro final interno será:
+
+\begin{equation}
+  d_{i,f} = \frac{d_{i,0}+d_{e,0}}{2} = \SI{0.35531496}{ft}
+\end{equation}
+
+O diâmetro interno médio durante a corosão de
+
+\begin{equation}
+  d_{i,m} = \frac{ d_{i,f} + d_{i,0} }{2} = \SI{0.34547244}{ft}
+\end{equation}
+
+A taxa de corrosão é
+
+\begin{equation}
+  \mathrm{ipy} = \frac{12 w}{t A \rho}
+\end{equation}
+
+Em que $A$ é área superficial interna do tubo, onde ocorre a corrosão, $\rho$ é a densidade, $t$ o tempo e $w$ a massa perdida.
+
+A massa perdida é
+
+\begin{equation}
+  w = \frac{\rho \pi (d_{i,f}^2 - d_{i,0}^2) L}{4}
+\end{equation}
+
+Em que L é um comprimento arbitrário do tubo.
+
+A área superficial $A$ varia ao longo da corrosão, mas pode ser calculada pelo diâmetro interno médio durante a corrosão,
+
+\begin{equation}
+  A = \pi d_{i,m} L
+\end{equation}
+
+Aplicando na fórmula,
+
+\begin{align}
+  \mathrm{ipy} = \dfrac{12 \rho \pi (d_{i,f}^2 - d_{i,0}^2) L}{4 t \pi d_{i,m} L \rho}
+\end{align}
+
+Simplificando,
+
+\begin{equation}
+  \mathrm{ipy} = \frac{3 (d_{i,f}^2 - d_{i,0}^2)}{t d_{i,m}} \\
+\end{equation}
+
+\begin{equation}
+  \mathrm{ipy} = \frac{3 \times (\num{0.35531496}^2 - \num{0.33562992}^2)}{3 \times \num{0.34547244}} = \SI{0.03937}{ft/ano} = \SI{12.00912}{mm/ano}
+\end{equation}
+
+\end{document}
